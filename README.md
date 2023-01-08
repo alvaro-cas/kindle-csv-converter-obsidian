@@ -7,7 +7,8 @@
 
 
 
-## Introduction
+
+## ~ Introduction
 
 This obsidian plugin is for converting your notes in .csv format to an Obsidian file. For exporting your notes in csv format refer to [this site/Import from kindle device](https://medium.com/@keisuke_w/how-to-export-kindle-notes-and-highlights-ebce5812bbfc), you will receive your file .csv file in your mail.
 
@@ -16,7 +17,8 @@ The reason I created this plugin is because I did not wanted to leave my Amazon 
 
 
 
-## Installation
+
+## ~ Installation
 You can install the plugin manually:
 
 #### 1. Go to releases section on github
@@ -32,7 +34,8 @@ Copy over `main.js`, `manifest.json` and `style.css` to this location inside you
 
 
 
-## Usage
+
+## ~ Usage
 You open Kindle CSV Converter in two different ways: 
 
 #### 1.Command Palette
@@ -52,7 +55,8 @@ Click on the box, File Explorer will open, choose your .csv file. Finally open y
 
 
 
-## Settings
+
+## ~ Settings
 
 | Name | Description | Default |
 |--|--|--|
@@ -64,7 +68,8 @@ Click on the box, File Explorer will open, choose your .csv file. Finally open y
 
 
 
-## Do you find this plugin useful?
+
+## ~ Do you find this plugin useful?
 
 Support further development of the plugin. Buy me a coffee!  
 
@@ -74,5 +79,6 @@ Hey, thank you for your support!
 
 
 
-## MIT LICENSE
+
+## ~ MIT LICENSE
 Review the [LICENSE](https://github.com/alvaro-cas/kindle-csv-converter-obsidian/blob/main/LICENSE)

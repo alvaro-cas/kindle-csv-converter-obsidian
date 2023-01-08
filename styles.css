@@ -1,0 +1,43 @@
+
+.vue-app {
+  background-color: black;
+  color: white;
+  position: absolute;
+  left: 10%;
+  top: 0%;
+}
+
+.h-modal {
+  text-align: center;
+  color: var(--text-normal);
+}
+
+.div-modal {
+  text-align: center;
+  color: var(--text-normal);
+}
+.main-div {
+  width: 100%;
+  text-align: center;
+  paddin: 7px;
+}
+
+.file-up-div {
+  width: 40%;
+  border: 2px solid var(--text-normal);
+  border-radius: 10px;
+  text-align: center;
+  padding: 2px;
+  margin: 0 auto;
+  transition: all 0.5s;
+}
+
+.file-up-div:hover {
+  transform: scale(1.03);
+}
+
+.file-up-div svg {
+  color: var(--text-normal);
+  width: 100%;
+  height: 200px;
+}

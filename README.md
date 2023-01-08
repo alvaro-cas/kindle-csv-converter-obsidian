@@ -1,19 +1,20 @@
 # Kindle CSV Converter Obsidian
-***
 **Create useful Kindle notes in [Obsidian.md](https://obsidian.md/) vault.** 
 
 ![](https://github.com/alvaro-cas/kindle-csv-converter-obsidian/blob/main/assets/ss.jpg?raw=true)
 
 > Sample image using Iframe(left) and no Iframe(right), with default configuration.
 
-***
+
 
 ## Introduction
 
-This obsidian plugin is for converting your notes in .csv format to an Obsidian file. For exporting your notes in csv format refer to [this site/Import from kindle device](https://medium.com/@keisuke_w/how-to-export-kindle-notes-and-highlights-ebce5812bbfc), you will receive your file .csv file in your mail. 
+This obsidian plugin is for converting your notes in .csv format to an Obsidian file. For exporting your notes in csv format refer to [this site/Import from kindle device](https://medium.com/@keisuke_w/how-to-export-kindle-notes-and-highlights-ebce5812bbfc), you will receive your file .csv file in your mail.
+
+
 The reason I created this plugin is because I did not wanted to leave my Amazon account in Obsidian, on the other hand clipplings.txt file disapears when you constantly delete books. If this is not your case please use this awesome [plugin](https://github.com/hadynz/obsidian-kindle-plugin).
 
-***
+
 
 ## Installation
 You can install the plugin manually:
@@ -29,7 +30,7 @@ Download `main.js`, `manifest.json` and `style.css`
 #### 3. Move files to vault
 Copy over `main.js`, `manifest.json` and `style.css` to this location inside your vault: `VaulName/.obsidian/plugins/kindle-csv-converter`. (create kindle-csv-converter folder)
 
-***
+
 
 ## Usage
 You open Kindle CSV Converter in two different ways: 
@@ -49,7 +50,7 @@ Click on the box, File Explorer will open, choose your .csv file. Finally open y
 
 > Note: Location and formatting of your file will vary depending on the settings you choose.
 
-***
+
 
 ## Settings
 
@@ -61,7 +62,7 @@ Click on the box, File Explorer will open, choose your .csv file. Finally open y
 | Highlight | How the highlights of your book will be formatted. (markdown syntax) (use '\n' for "Enter") | *** \n \n > [!quote] location \n \*highlight\* \n \n |
 | Note | How the notes of your book will be formatted. (markdown syntax) (use '\n' for "Enter") | \*\*Note\*\* \n > note \n \n |
 
----
+
 
 ## Do you find this plugin useful?
 
@@ -71,7 +72,7 @@ Support further development of the plugin. Buy me a coffee!
 
 Hey, thank you for your support!
 
-***
+
 
 ## MIT LICENSE
 Review the [LICENSE](https://github.com/alvaro-cas/kindle-csv-converter-obsidian/blob/main/LICENSE)

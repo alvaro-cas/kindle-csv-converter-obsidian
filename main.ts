@@ -15,8 +15,8 @@ export default class kindleCsvPlugin extends Plugin {
       id: 'kindle-csv-converter',
       name: 'Choose File',
       checkCallback: (checking: boolean) => {
-        let leaf = this.app.workspace.activeLeaf;
-        if (leaf) {
+        const view = this.app.workspace.getActiveViewOfType(MarkdownView);
+        if (view) {
           if (!checking) {
             new reader(this.app, this.settings).open();
           }

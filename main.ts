@@ -1,24 +1,26 @@
-import { App, Plugin } from 'obsidian';
+import { App } from 'obsidian';
+import { Plugin } from 'obsidian';
 
-import { DEFAULT_SETTINGS, kindleSettings } from './settings';
-import { reader } from './modal_read';
+import { DEFAULT_SETTINGS } from './src/settings';
+import { KindleSettings } from './src/settings';
+import { Reader } from './src/modal_read';
 
-export default class kindleCsvPlugin extends Plugin {
+export default class KindleCsvPlugin extends Plugin {
   async onload() {
     await this.loadSettings();
 
     this.addRibbonIcon("library", "Kindle CSV Converter", () => {
-      new reader(this.app, this.settings).open();
+      new Reader(this.app, this.settings).open();
     });
 
     this.addCommand({
-      id: 'kindle-csv-converter',
+      id: 'choose-file',
       name: 'Choose File',
       checkCallback: (checking: boolean) => {
         const view = this.app.workspace.getActiveViewOfType(MarkdownView);
         if (view) {
           if (!checking) {
-            new reader(this.app, this.settings).open();
+            new Reader(this.app, this.settings).open();
           }
           return true;
         }
@@ -26,7 +28,7 @@ export default class kindleCsvPlugin extends Plugin {
       }
     })
 
-    this.addSettingTab(new kindleSettings(this.app, this));
+    this.addSettingTab(new KindleSettings(this.app, this));
 
   }
 

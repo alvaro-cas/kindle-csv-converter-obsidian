@@ -10,15 +10,18 @@
 
 ## ~ Introduction
 
-This obsidian plugin is for converting your notes in .csv format to an Obsidian file. For exporting your notes in csv format refer to [this site/Import from kindle device](https://medium.com/@keisuke_w/how-to-export-kindle-notes-and-highlights-ebce5812bbfc), you will receive your file .csv file in your mail.
+This obsidian plugin is for converting your notes in .csv format to an Obsidian file. For exporting your notes in csv format refer to [this site/Import from kindle device](https://medium.com/@keisuke_w/how-to-export-kindle-notes-and-highlights-ebce5812bbfc), you will receive your .csv file in your mail.
 
 
-The reason I created this plugin is because I did not wanted to leave my Amazon account in Obsidian, on the other hand clipplings.txt file disapears when you constantly delete books. If this is not your case please use this awesome [plugin](https://github.com/hadynz/obsidian-kindle-plugin).
+The reason I created this plugin is because I did not wanted to leave my Amazon account in Obsidian, on the other hand clipplings.txt file disappears when you constantly delete books. If this is not your case please use this awesome [plugin](https://github.com/hadynz/obsidian-kindle-plugin).
 
 
 
 
 ## ~ Installation
+You can install the plugin via the Community Plugins tab within Obsidian by searching for "Kindle CSV Converter"
+
+### Manual
 You can install the plugin manually:
 
 #### 1. Go to releases section on github

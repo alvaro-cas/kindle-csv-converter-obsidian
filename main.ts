@@ -17,14 +17,10 @@ export default class KindleCsvPlugin extends Plugin {
       id: 'choose-file',
       name: 'Choose File',
       checkCallback: (checking: boolean) => {
-        const view = this.app.workspace.getActiveViewOfType(MarkdownView);
-        if (view) {
-          if (!checking) {
-            new Reader(this.app, this.settings).open();
-          }
-          return true;
+        if (!checking) {
+          new Reader(this.app, this.settings).open();
         }
-        return false;
+        return true;
       }
     })
 

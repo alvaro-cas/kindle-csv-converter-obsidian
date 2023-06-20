@@ -105,12 +105,12 @@ export class KindleSettings extends PluginSettingTab {
 
     containerEl.createEl('h3', { text: 'Support me!' });
 
-    const div = this.containerEl.createDiv("coffee");
+    const div = this.containerEl.createDiv("liberapay");
     div.createEl("a", {
-      href: "https://www.buymeacoffee.com/alvaro.cas"
+      href: "https://liberapay.com/Cuatroy2/donate"
     }).createEl("img", {
       attr: {
-        src: "https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=☕&slug=alvaro.cas&button_colour=FFDD00&font_colour=000000&font_family=Inter&outline_colour=000000&coffee_colour=ffffff"
+        src: "https://liberapay.com/assets/widgets/donate.svg"
       }
     })
   }

@@ -72,16 +72,15 @@ Click on the box, File Explorer will open, choose your .csv file. Finally open y
 
 
 
-## ~ Do you find this plugin useful?
-
-Support further development of the plugin. Buy me a coffee!  
-
-<a href="https://www.buymeacoffee.com/alvaro.cas"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=alvaro.cas&button_colour=FFDD00&font_colour=000000&font_family=Inter&outline_colour=000000&coffee_colour=ffffff"></a>
-
-Hey, thank you for your support!
-
-
-
-
 ## ~ MIT LICENSE
 Review the [LICENSE](https://github.com/alvaro-cas/kindle-csv-converter-obsidian/blob/main/LICENSE)
+
+
+
+
+## The End
+I hope you enjoy! You can *support* my work [here](https://liberapay.com/Cuatroy2/donate) (I contribute 1% of my revenue to fund carbon removal🌳) or check more content at my [Medium](https://medium.com/@cuatroy2).
+
+*Peace Out!* 🤙
+
+<noscript><a href="https://liberapay.com/Cuatroy2/donate"><img alt="Donate using Liberapay" src="https://liberapay.com/assets/widgets/donate.svg"></a></noscript>

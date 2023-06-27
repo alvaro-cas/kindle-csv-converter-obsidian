@@ -40,7 +40,7 @@ export class CSV extends Modal {
       new Setting(contentEl)
         .setName('Specify name')
         .addText((text) =>
-          text.onChange((value) => {
+          text.onChange(async value => {
             noteName = value;
           }))
     }
@@ -53,7 +53,6 @@ export class CSV extends Modal {
           .setValue(iframe)
           .onChange(async value => {
             iframe = value;
-            await this.plugin.saveSettings();
           }))
 
     new Setting(contentEl)
@@ -62,14 +61,17 @@ export class CSV extends Modal {
           .setButtonText('Generate!')
           .setCta()
           .onClick(() => {
-            this.close();
             this.createFileCSV();
+            this.close();
           }))
   }
 
   onClose() {
     let { contentEl } = this;
     contentEl.empty();
+    defaultName = true;
+    noteName = null;
+    iframe = true;
   }
 
   createFileCSV() {
@@ -78,7 +80,12 @@ export class CSV extends Modal {
       name = this.data[1][0].replace(/[\[\]\/\\#:"^|]/g, '');
       name = name.replace(/ /g, this.settings.separator);
     } else {
-      name = noteName.replace(/[\[\]\/\\#:"^|]/g, '');
+      if (noteName != null && noteName != '') {
+        name = noteName.replace(/[\[\]\/\\#:"^|]/g, '');
+      } else {
+        new Notice('Invalid Name!');
+        throw new Error();
+      }
     }
 
     let markdown = '';
@@ -111,8 +118,7 @@ export class CSV extends Modal {
 
     this.app.vault.create(`${this.settings.path}/${name}.md`, markdown)
     .then(() => {
-      new Notice(`Your notes were succesfully created. \
-                 Path: ${this.settings.path}`);
+      new Notice(`Your notes were succesfully created. Path: ${this.settings.path}`);
     })
     .catch((err) => {
       console.log(err);

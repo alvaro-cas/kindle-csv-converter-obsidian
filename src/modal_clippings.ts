@@ -51,7 +51,7 @@ export class Clippings extends Modal {
       new Setting(contentEl)
         .setName('Specify name')
         .addText((text) =>
-          text.onChange((value) => {
+          text.onChange(async value => {
             noteName = value;
           }))
     }
@@ -72,14 +72,23 @@ export class Clippings extends Modal {
           .setButtonText('Generate!')
           .setCta()
           .onClick(() => {
-            this.close();
-            this.createFileClippings();
+            if (selectedBook != null && selectedBook != '') {
+              this.createFileClippings();
+              this.close();
+            } else {
+              new Notice('Please select a book!');
+              throw new Error();
+            }
           }))
   }
 
   onClose() {
     let { contentEl } = this;
     contentEl.empty();
+    defaultName = true;
+    selectedBook = null;
+    noteName = null;
+    enhance = true;
   }
 
   createFileClippings() {
@@ -88,7 +97,12 @@ export class Clippings extends Modal {
       name = selectedBook.replace(/[\[\]\/\\#:"^|]/g, '');
       name = name.replace(/ /g, this.settings.separator);
     } else {
-      name = noteName.replace(/[\[\]\/\\#:"^|]/g, '');
+      if (noteName != null && noteName != '') {
+        name = noteName.replace(/[\[\]\/\\#:"^|]/g, '');
+      } else {
+        new Notice('Invalid Name!');
+        throw new Error();
+      }
     }
 
     let markdown = '';
@@ -136,8 +150,7 @@ export class Clippings extends Modal {
 
     this.app.vault.create(`${this.settings.path}/${name}.md`, markdown)
     .then(() => {
-      new Notice(`Your notes were succesfully created. \
-                 Path: ${this.settings.path}`);
+      new Notice(`Your notes were succesfully created. Path: ${this.settings.path}`);
     })
     .catch((err) => {
       console.log(err);

@@ -2,14 +2,13 @@ import { PluginSettingTab } from 'obsidian';
 import { Setting } from 'obsidian';
 import { TFolder } from 'obsidian';
 import _ from 'lodash';
-import { Reader } from './modal_read';
 
 let ribbonKindle = null;
 
 interface KindleCsvPluginSettings {
   path: string
   separator: string
-  iframe: boolean
+  header: string
   highlight: string
   note: string
 }
@@ -17,7 +16,7 @@ interface KindleCsvPluginSettings {
 export const DEFAULT_SETTINGS: KindleCsvPluginSettings = {
   path: '/',
   separator: '_',
-  iframe: true,
+  header: '\\n==Your Kindle Notes For:== title __by author__\\n \\n',
   highlight: '*** \\n \\n > [!quote] location \\n *highlight* \\n \\n',
   note: '**Note** \\n > note \\n \\n',
 }
@@ -32,14 +31,13 @@ export class KindleSettings extends PluginSettingTab {
     let { containerEl } = this;
 
     containerEl.empty();
-
     containerEl.createEl('h3', { text: 'Settings: Kindle CSV Converter' });
 
     new Setting(containerEl)
       .setName('Path for saving')
-      .setDesc('This is the path were your notes will be saved.')
+      .setDesc('Path where your notes will be saved.')
       .addDropdown((dropdown) => {
-        let folders = []
+        let folders = [];
         for (let file of this.app.vault.getAllLoadedFiles()) {
           if (file instanceof TFolder) {
             folders.push(file);
@@ -55,12 +53,12 @@ export class KindleSettings extends PluginSettingTab {
         .onChange(async value => {
           this.plugin.settings.path = value;
           await this.plugin.saveSettings();
+          })
         })
-      })
 
     new Setting(containerEl)
       .setName('Separator')
-      .setDesc('This is how the file name will be formatted. Example: "Title of my book" is going to be "Title_of_my_book".')
+      .setDesc('This is how the file name will be formatted. Example: "Title of my book" is going to be "Title_of_my_book". You can add a custom name at conversion.')
       .addText(text =>
         text
           .setPlaceholder('Default is "_"')
@@ -71,13 +69,13 @@ export class KindleSettings extends PluginSettingTab {
           }))
 
     new Setting(containerEl)
-      .setName('Show iframe')
-      .setDesc('Shows additional information of your Kindle book.')
-      .addToggle(text =>
+      .setName('Header')
+      .setDesc(`This represents how the header will be formatted. Default: ${DEFAULT_SETTINGS['header']}`)
+      .addText(text =>
         text
-          .setValue(this.plugin.settings.iframe)
+          .setValue(this.plugin.settings.header)
           .onChange(async value => {
-            this.plugin.settings.iframe = value;
+            this.plugin.settings.header = value;
             await this.plugin.saveSettings();
           }))
 
@@ -101,7 +99,7 @@ export class KindleSettings extends PluginSettingTab {
           .onChange(async value => {
             this.plugin.settings.note = value;
             await this.plugin.saveSettings();
-      }))
+          }))
 
     containerEl.createEl('h3', { text: 'Support me!' });
 

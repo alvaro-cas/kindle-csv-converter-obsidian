@@ -1,6 +1,7 @@
 import { Modal } from 'obsidian';
-import { Notice } from 'obsidian';
 import { setIcon } from 'obsidian';
+import { Clippings } from './modal_clippings';
+import { CSV } from './modal_csv';
 
 const fs = require('fs');
 const readline = require('readline');
@@ -13,14 +14,30 @@ export class Reader extends Modal {
 
   onOpen() {
     let { contentEl } = this;
-    contentEl.createEl('h2', { text: 'Kindle CSV to Obsidian', cls: 'h-modal' });
+    contentEl.createEl('h2',
+                       { text: 'Kindle CSV to Obsidian',
+                         cls: 'h2-modal' });
 
-    const divMain = contentEl.createDiv({ cls: 'main-div' });
-    const divIcon = divMain.createDiv({ cls: 'file-up-div' });
-    setIcon(divIcon, 'file-up');
-    divIcon.createEl('div', { text: 'Choose your file', cls: 'div-modal' });
-    divIcon.onclick = _this => {
-      this.createFile();
+    const container = contentEl.createDiv({ cls: 'container-modal' });
+
+    const csv = container.createDiv();
+    const csvIcon = csv.createDiv({ cls: 'icon-modal' });
+    setIcon(csvIcon, 'upload');
+    csvIcon.createEl('div',
+                     { text: 'Select my CSV file',
+                       cls: 'text-modal' });
+    csvIcon.onclick = _this => {
+      this.createFileCSV();
+    }
+
+    const clippings = container.createDiv();
+    const clippingsIcon = clippings.createDiv({ cls: 'icon-modal' });
+    setIcon(clippingsIcon, 'paperclip');
+    clippingsIcon.createEl('div',
+                           { text: 'Select My Clippings file',
+                             cls: 'text-modal' });
+    clippingsIcon.onclick = _this => {
+      this.createFileClippings();
     }
   }
 
@@ -29,7 +46,7 @@ export class Reader extends Modal {
     contentEl.empty();
   }
 
-  createFile() {
+  createFileCSV() {
     let input = activeDocument.createElement('input');
     input.type = 'file';
     input.accept = '.csv';
@@ -41,54 +58,69 @@ export class Reader extends Modal {
 
       reader.on('line', (row) => {
         let line = row.split(',');
-
         let result = line.splice(0, 3);
-        result.push(line.join(','));
 
+        result.push(line.join(','));
         data.push(result);
       })
 
       reader.on('close', () => {
-        let name = data[1][0].replace(/[&\/\\#,+()$~%.'":*?<>{}]/g, '');
-        name = name.replace(/ /g, this.settings.separator);
+        new CSV(this.app, this.settings, data).open();
+      })
+    }
+    input.click();
+    this.close();
+  }
 
-        let markdown;
+  createFileClippings() {
+    let input = activeDocument.createElement('input');
+    input.type = 'file';
+    input.accept = '.txt';
+    input.onchange = _this => {
+      const stream = fs.createReadStream(input.files[0]['path']);
+      const reader = readline.createInterface({ input: stream });
 
-        if (this.settings.iframe == true) {
-          markdown = `\n<iframe
-          \ height=600px
-          \ width=100%
-          \ src=${data[4][0]}></iframe> \n`
-        } else {
-          markdown = `${data[0][0].replace(/"/g, '')} `
-                  +  `${data[1][0].replace(/"/g, '')} `
-                  +  `${data[2][0].replace(/"/g, '')} \n`
-        }
+      let data = [];
+      let booksTitles = [];
+      let beforeRow = '1';
+      let before2Row = '';
+      let before3Row = '';
+      let index = 0;
 
-        for(let i=8; i < data.length; i++) {
-          if (data[i][0] == '"Note"') {
-            let note = this.settings.note.replace('note', data[i][3].replace(/"/g, ''));
-            note = note.replace(/\\n/g, '\n');
-            markdown += note;
-          } else {
-            let highlight = this.settings.highlight.replace('highlight', data[i][3]);
-            highlight = highlight.replace(/\\n/g, '\n');
-            highlight = highlight.replace('location', data[i][1].replace(/"/g, ''));
-            markdown += highlight;
+      reader.on('line', (row) => {
+        row = row.replace(/\uFEFF/gm, '');
+
+        if (row.slice(-1) == ')' &&
+            (beforeRow == '==========' || beforeRow == '1')) {
+          if (booksTitles.indexOf(row) == -1) {
+            booksTitles.push(row);
           }
         }
 
-        this.app.vault.create(`${this.settings.path}/${name}.md`, markdown)
-        .then(() => {
-          new Notice(`Your notes were succesfully created. \
-                     Path: ${this.settings.path}`);
-        })
-        .catch((err) => {
-          console.log(err);
-          new Notice('File already exists. Please delete and try again.');
-        })
+        let loct = before2Row.split(" | ")
+        loct.length == 3 ? loct = loct[1] : loct = loct[0].split(' on ')[1]
+
+        before2Row.includes('Highlight') ? data.push([before3Row,
+                                                     'Your Highlight ',
+                                                     loct, row,
+                                                     index]) : false;
+
+        before2Row.includes('Note') ? data.push([before3Row,
+                                                'Your Note ',
+                                                '', row,
+                                                index]) : false;
+
+        before3Row = before2Row;
+        before2Row = beforeRow;
+        beforeRow = row;
+        index++;
+      })
+
+      reader.on('close', () => {
+        new Clippings(this.app, this.settings, booksTitles, data).open();
       })
     }
+
     input.click();
     this.close();
   }

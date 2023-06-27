@@ -29,7 +29,7 @@ export default class KindleCsvPlugin extends Plugin {
   }
 
   onunload() {
-    console.log('unloading plugin');
+    console.log('Unloading plugin');
   }
 
   async loadSettings() {

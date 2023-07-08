@@ -20,6 +20,9 @@ The existence of this plugin is only for converting CSV and My Clippings with de
 > While you can, use the CSV formatting.
 
 
+***
+
+
 ## Installation
 You can install the plugin via the [Community Plugins](https://obsidian.md/plugins?search=Kindle%20CSV%20Converter) tab within Obsidian by searching for "Kindle CSV Converter".
 
@@ -37,21 +40,23 @@ You can install the plugin manually:
 You open Kindle CSV Converter in two different ways: 
 
 #### 1.Command Palette
-Press Ctrl+P or selected hotkey to open the command palette. Search for "Kindle CSV Converter" or "Choose File".
+Press Ctrl+P or selected hotkey to open the command palette. Search for "Kindle CSV Converter" or "Choose File".  
 
 ![](https://raw.githubusercontent.com/alvaro-cas/kindle-csv-converter-obsidian/main/assets/ss_command.jpg)
 
 #### 2. Ribbon Icon
-Navigate to the left sidebar, select the ribbon with a library icon.
+Navigate to the left sidebar, select the ribbon with a library icon.  
 
 ![](https://github.com/alvaro-cas/kindle-csv-converter-obsidian/blob/main/assets/ss_ribbon.jpg?raw=true)
 
 ### Import your file
-After following either option 1 or 2, a modal will appear.
+After following either option 1 or 2, a modal will appear.  
 
-![](https://github.com/alvaro-cas/kindle-csv-converter-obsidian/blob/main/assets/ss_modal.png?raw=true)
+![](https://github.com/alvaro-cas/kindle-csv-converter-obsidian/blob/main/assets/ss_modal.png?raw=true)  
 
 Depending on your needs, you will select either CSV or "My Clippings.txt". Click on desired box, File Explorer will open, choose your file and open. Then you can select specific options for your conversion:
+
+***
 
 #### ~ CSV
 

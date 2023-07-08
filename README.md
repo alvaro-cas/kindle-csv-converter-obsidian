@@ -30,47 +30,59 @@ You can install the plugin manually:
 - Copy over `main.js`, `manifest.json` and `style.css` to this location inside your vault: `VaulName/.obsidian/plugins/kindle-csv-converter`. (create kindle-csv-converter folder)
 
 
+***
+
+
 ## Usage
 You open Kindle CSV Converter in two different ways: 
 
 #### 1.Command Palette
 Press Ctrl+P or selected hotkey to open the command palette. Search for "Kindle CSV Converter" or "Choose File".
+
 ![](https://raw.githubusercontent.com/alvaro-cas/kindle-csv-converter-obsidian/main/assets/ss_command.jpg)
 
 #### 2. Ribbon Icon
 Navigate to the left sidebar, select the ribbon with a library icon.
+
 ![](https://github.com/alvaro-cas/kindle-csv-converter-obsidian/blob/main/assets/ss_ribbon.jpg?raw=true)
 
 ### Import your file
 After following either option 1 or 2, a modal will appear.
-![](https://github.com/alvaro-cas/kindle-csv-converter-obsidian/blob/main/assets/ss_modal.png?raw=true)
-Deppending on your needs you will select either CSV or "My Clippings.txt". Click on desired box, File Explorer will open, choose your file and open. Then you can select specific options for your conversion:
 
-#### CSV
+![](https://github.com/alvaro-cas/kindle-csv-converter-obsidian/blob/main/assets/ss_modal.png?raw=true)
+
+Depending on your needs, you will select either CSV or "My Clippings.txt". Click on desired box, File Explorer will open, choose your file and open. Then you can select specific options for your conversion:
+
+#### ~ CSV
+
 ![](https://github.com/alvaro-cas/kindle-csv-converter-obsidian/blob/main/assets/ss_csv.png?raw=true)
+
 ##### Options
 
 | Name | Description | Default |
 |--|--|--|
 | Use book name for note | This will use the title of book with separator specified in the settings. | true |
-| Name | This will show if above setting is false. | None |
+| Name | This will show if the above setting is false. | None |
 | Iframe | This shows additional information of your book inside an iframe. | true |
 
-#### My Clippings
+#### ~ My Clippings
+
 ![](https://github.com/alvaro-cas/kindle-csv-converter-obsidian/blob/main/assets/ss_clippings.png?raw=true)
+
 ##### Options
 
 | Name | Description | Default |
 |--|--|--|
 | Select book to import | This shows all books available in "My Clippings.txt", you must select desired. | None |
 | Use book name for note | This will use the title of book with separator specified in the settings. | true |
-| Name | This will show if above setting is false. | None |
+| Name | This will show if the above setting is false. | None |
 | Enhance | Improve notes by removing repeated. | true |
 
 Click Generate! Now your file is converted!
 
 > Note: Location and formatting of your file will vary depending on the settings you choose.
 
+***
 
 ## Settings
 
@@ -78,9 +90,9 @@ Click Generate! Now your file is converted!
 |--|--|--|
 | Path | The path inside your vault where your converted notes will be saved. | / |
 | Separator | Separator of your file name. Example: "Title of my book" is going to be "Title_of_my_book". | _ |
-| Header | How the header of your note will be formatted. (markdown syntax) (use '\n' for "Enter") (title and author are variables and will be replaced) | \n==Your Kindle Notes For:== title __by author__ \n \n |
-| Highlight | How the highlights of your book will be formatted. (markdown syntax) (use '\n' for "Enter")  (highlight is a variable and will be replaced)| *** \n \n > [!quote] location \n \*highlight\* \n \n |
-| Note | How the notes of your book will be formatted. (markdown syntax) (use '\n' for "Enter")  (note is a variable and will be replaced)| \*\*Note\*\* \n > note \n \n |
+| Header | How the header of your note will be formatted. (Markdown syntax) (use '\n' for "Enter") (title and author are variables and will be replaced) | \n==Your Kindle Notes For:== title __by author__ \n \n |
+| Highlight | How the highlights of your book will be formatted. (Markdown syntax) (use '\n' for "Enter")  (highlight is a variable and will be replaced)| *** \n \n > [!quote] location \n \*highlight\* \n \n |
+| Note | How the notes of your book will be formatted. (Markdown syntax) (use '\n' for "Enter")  (note is a variable and will be replaced)| \*\*Note\*\* \n > note \n \n |
 
 
 ## Future implementations

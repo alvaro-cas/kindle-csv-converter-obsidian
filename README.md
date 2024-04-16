@@ -104,6 +104,12 @@ Click Generate! Now your file is converted!
 - Clean "My Clippings.txt" file automatically
 - Import in bundles
 
+## Language Support
+If your notes are in another language you can open an issue, so I can add it.
+
+### Supported
+- English
+- German
 
 ## MIT LICENSE
 Review the [LICENSE](https://github.com/alvaro-cas/kindle-csv-converter-obsidian/blob/main/LICENSE)

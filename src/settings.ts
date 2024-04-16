@@ -3,8 +3,6 @@ import { Setting } from 'obsidian';
 import { TFolder } from 'obsidian';
 import _ from 'lodash';
 
-let ribbonKindle = null;
-
 interface KindleCsvPluginSettings {
   path: string
   separator: string

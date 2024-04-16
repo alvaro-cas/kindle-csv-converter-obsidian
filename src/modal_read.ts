@@ -100,15 +100,15 @@ export class Reader extends Modal {
         let loct = before2Row.split(" | ")
         loct.length == 3 ? loct = loct[1] : loct = loct[0].split(' on ')[1]
 
-        before2Row.includes('Highlight') ? data.push([before3Row,
-                                                     'Your Highlight ',
-                                                     loct, row,
-                                                     index]) : false;
+        if (before2Row.includes('Highlight') ||
+            before2Row.includes('Markierung')) {
+          data.push([before3Row, 'Your Highlight ', loct, row, index])
+        }
 
-        before2Row.includes('Note') ? data.push([before3Row,
-                                                'Your Note ',
-                                                '', row,
-                                                index]) : false;
+        if (before2Row.includes('Note') ||
+          before2Row.includes('Notiz')) {
+          data.push([before3Row, 'Your Note ', '', row, index])
+        }
 
         before3Row = before2Row;
         before2Row = beforeRow;

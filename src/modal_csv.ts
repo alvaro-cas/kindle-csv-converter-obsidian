@@ -104,7 +104,8 @@ export class CSV extends Modal {
     }
 
     for(let i=8; i < this.data.length; i++) {
-      if (this.data[i][0] == '"Note"') {
+      if (this.data[i][0] == '"Note"' ||
+      	  this.data[i][0] == '"Notiz"' ) {
         let note = this.settings.note.replace('note', this.data[i][3].replace(/"/g, ''));
         note = note.replace(/\\n/g, '\n');
         markdown += note;

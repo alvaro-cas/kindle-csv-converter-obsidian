@@ -1,7 +1,7 @@
 {
 	"id": "kindle-csv-converter",
 	"name": "Kindle CSV Converter",
-	"version": "1.0.2",
+	"version": "1.1.0",
 	"minAppVersion": "0.15.0",
 	"description": "Import your Kindle notes in .csv format to Obsidian.",
 	"author": "Álvaro",

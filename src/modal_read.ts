@@ -90,15 +90,25 @@ export class Reader extends Modal {
 	    reader.on('line', (row) => {
 		row = row.replace(/\uFEFF/gm, '');
 
+		// Get books that are available in clippings file
 		if (row.slice(-1) == ')' &&
 		    (beforeRow == '==========' || beforeRow == '1')) {
 		    if (booksTitles.indexOf(row) == -1) {
 			booksTitles.push(row);
 		    }
 		}
-
+		
 		let loct = before2Row.split(" | ")
-		loct.length == 3 ? loct = loct[1] : loct = loct[0].split(' on ')[1]
+		if (loct.length == 3) {
+		    loct = loct[1]
+
+		} else {
+		    if (loct[0].match(' on ')) {
+			loct = loct[0].split(' on ')[1]
+		    } else {
+			loct = loct[0].split(' at ')[1]			
+		    }
+		}
 
 		if (before2Row.includes('Highlight') ||
 		    before2Row.includes('Markierung')) {

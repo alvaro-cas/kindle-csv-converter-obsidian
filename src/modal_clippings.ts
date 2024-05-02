@@ -122,6 +122,7 @@ export class Clippings extends Modal {
 		    let note = this.settings.note.replace('note', this.data[i][3]);
 		    note = note.replace(/\\n/g, '\n');
 		    markdown += note;
+		    
 		} else {
 		    let loctN = this.data[i][2].split('-')
 		    let a = i;
